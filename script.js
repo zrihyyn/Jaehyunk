@@ -61,8 +61,8 @@ const projects = [
     { image: "images/1 14.png", caption: "<em>Archiving + Measuring</em>" },
     { image: "images/1 10.png", caption: "<em>Archiving + Measuring</em>" },
     { image: "images/red4.png", caption: "<em>Archiving + Measuring</em>" },
-    { image: "images/web2.jpg", caption: '<em>What Makes Our Childhood</em> · <a href="https://zrihyyn.github.io/childhood/" target="_blank">Website</a>'  },
-    { image: "images/web2-3.jpg", caption: '<em>What Makes Our Childhood</em> · <a href="https://zrihyyn.github.io/childhood/" target="_blank">Website</a>' },
+    // { image: "images/web2.jpg", caption: '<em>What Makes Our Childhood</em> · <a href="https://zrihyyn.github.io/childhood/" target="_blank">Website</a>'  },
+    // { image: "images/web2-3.jpg", caption: '<em>What Makes Our Childhood</em> · <a href="https://zrihyyn.github.io/childhood/" target="_blank">Website</a>' },
     { video: "images/short3.mp4", caption: '<em>Reframing Women</em>, single-channel video, 13′15″ · <a href="https://vimeo.com/jhkim/reframing-women?share=copy&fl=sv&fe=ci" target="_blank">Vimeo</a>' },
     { image: "images/tool.jpeg", caption: "<em>Tool for Writing</em>" },
     { image: "images/scan.png", caption: "<em>Tool for Writing</em>" },
@@ -75,7 +75,7 @@ const projects = [
     { image: "images/IMG_3822.jpg", caption: "" },
     { image: "images/DSC04116.JPG", caption: "Stools" },
     { image: "images/thesis.jpg", caption: '<em>KABK Graphic Design 2026 Thesis Landing Website</em>, with Stanisław Zieliński · <a href="https://kabk.github.io/go-theses-26/" target="_blank">Visit</a>' },
-    { image: "images/thesis-jh.jpg", caption: '<em>Women–Poetry–Translation: Rewriting Feminist Voices across Text and Archive</em> · <a href="https://kabk.github.io/go-theses-26-jaehyun-kim/" target="_blank">Visit</a>' },
+    // { image: "images/thesis-jh.jpg", caption: '<em>Women–Poetry–Translation: Rewriting Feminist Voices across Text and Archive</em> · <a href="https://kabk.github.io/go-theses-26-jaehyun-kim/" target="_blank">Visit</a>' },
 
 
 
@@ -100,45 +100,46 @@ const projects = [
       video.load();
       video.style.display = "none";
   
-      img.style.opacity = "0";
+      img.src = project.image;
       img.style.display = "block";
-
-      img.onload = () => {
-      img.style.opacity = "1";
-  };
-
-img.src = project.image;
     }
   
     if (project.video) {
       img.style.display = "none";
       img.removeAttribute("src");
   
-      video.style.opacity = "0";
-
-video.src = project.video;
-video.style.display = "block";
-video.muted = true;
-video.loop = true;
-video.playsInline = true;
-
-video.onloadeddata = () => {
-  video.style.opacity = "1";
-  video.play();
-};
+      video.src = project.video;
+      video.style.display = "block";
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.play();
+    }
+  
+    // Preload next image
+    const next = projects[(current + 1) % projects.length];
+    if (next.image) {
+      const preloadNext = new Image();
+      preloadNext.src = next.image;
+    }
+  
+    // Preload previous image
+    const prev = projects[(current - 1 + projects.length) % projects.length];
+    if (prev.image) {
+      const preloadPrev = new Image();
+      preloadPrev.src = prev.image;
     }
   }
-  
   render();
-  
-  gallery.addEventListener("click", (e) => {
-    const rect = gallery.getBoundingClientRect();
-  
-    if (e.clientX > rect.left + rect.width / 2) {
-      current = (current + 1) % projects.length;
-    } else {
-      current = (current - 1 + projects.length) % projects.length;
-    }
-  
-    render();
-  });
+
+gallery.addEventListener("click", (e) => {
+  const rect = gallery.getBoundingClientRect();
+
+  if (e.clientX > rect.left + rect.width / 2) {
+    current = (current + 1) % projects.length;
+  } else {
+    current = (current - 1 + projects.length) % projects.length;
+  }
+
+  render();
+});
