@@ -4,10 +4,19 @@
     box-sizing:border-box;
 }
 
+html,
 body{
-    font-family: "monotype-grotesque", sans-serif;
-    background:rgb(0, 0, 0);
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:"monotype-grotesque", sans-serif;
+    background:#000;
     color:black;
+    position:fixed;
+    inset:0;
 }
 
 header{
@@ -27,27 +36,31 @@ h1{
 
 .gallery{
     width:100vw;
-    height:100vh;
+    height:100dvh;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
+    overflow:hidden;
     cursor:pointer;
 
     img{
-        width:100%;
-        height:100%;
+        display:block;
+        max-width:100%;
+        max-height:100%;
+        width:auto;
+        height:auto;
         object-fit:contain;
-    
     }
 
     video{
         display:none;
-        width:100%;
-        height:100%;
+        max-width:100%;
+        max-height:100%;
+        width:auto;
+        height:auto;
         object-fit:contain;
-    
     }
 }
 
@@ -61,11 +74,11 @@ figcaption{
     font-size:13px;
     color:white;
     mix-blend-mode:difference;
-    font-weight: 300;
-    letter-spacing: 0.05rem;
+    font-weight:300;
+    letter-spacing:.05rem;
+
     a{
-        text-decoration: underline;
-        color: white;
-        mix-blend-mode:difference;
+        color:white;
+        text-decoration:underline;
     }
 }
