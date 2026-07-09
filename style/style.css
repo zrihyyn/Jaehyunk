@@ -37,6 +37,8 @@ h1 {
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+  opacity: 1;
+  transition: opacity 0.15s ease-out;
 }
 .gallery video {
   display: none;
@@ -44,6 +46,8 @@ h1 {
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+  opacity: 1;
+  transition: opacity 0.15s ease-out;
 }
 
 figcaption {

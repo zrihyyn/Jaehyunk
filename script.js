@@ -100,20 +100,32 @@ const projects = [
       video.load();
       video.style.display = "none";
   
-      img.src = project.image;
+      img.style.opacity = "0";
       img.style.display = "block";
+
+      img.onload = () => {
+      img.style.opacity = "1";
+  };
+
+img.src = project.image;
     }
   
     if (project.video) {
       img.style.display = "none";
       img.removeAttribute("src");
   
-      video.src = project.video;
-      video.style.display = "block";
-      video.muted = true;
-      video.loop = true;
-      video.playsInline = true;
-      video.play();
+      video.style.opacity = "0";
+
+video.src = project.video;
+video.style.display = "block";
+video.muted = true;
+video.loop = true;
+video.playsInline = true;
+
+video.onloadeddata = () => {
+  video.style.opacity = "1";
+  video.play();
+};
     }
   }
   
