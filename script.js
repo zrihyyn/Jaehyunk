@@ -1,5 +1,5 @@
 const projects = [
-    { image: "images/project5.jpg", caption: "<em>Reframing Women</em>, 192 papes, 200 × 280 mm" },
+    { image: "images/project5.JPG", caption: "<em>Reframing Women</em>, 192 papes, 200 × 280 mm" },
     { image: "images/project6.jpg", caption: "<em>Reframing Women</em>, 192 papes, 200 × 280 mm" },
     { image: "images/dsc04277.jpg", caption: "<em>Reframing Women</em>, 192 papes, 200 × 280 mm" },
     { image: "images/project1.jpg", caption: "<em>Women–Poetry–Translation: Rewriting Feminist Voices across Text and Archive</em>, 35 pages, 120 × 190 mm" },
