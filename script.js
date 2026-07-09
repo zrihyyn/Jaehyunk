@@ -73,18 +73,7 @@ const projects = [
     { video: "images/poster.mp4",caption: '<a href="https://www.tomnjamie.com/" target="_blank">tomnjamie.com</a>' },
     { image: "images/DSC04195.jpg", caption: "<em>Reframing Women</em>, 192 pages, 200 × 280 mm" },
     { image: "images/img_3822.jpg", caption: "" },
-    { image: "images/dsc04116.jpg", caption: "Stools" },
-
-
-
-
-
-
-
-
-
-
-
+    { image: "images/DSC04116.JPG", caption: "Stools" },
 
 
 
