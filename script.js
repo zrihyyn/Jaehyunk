@@ -11,10 +11,7 @@ images.forEach((image, index) => {
 
     if (!width || !height) return;
 
-    /*
-      HTML에 잘못된 aspect-ratio가 있더라도
-      실제 이미지 비율로 덮어씁니다.
-    */
+
     placeholder.style.aspectRatio = `${width} / ${height}`;
 
     placeholder.classList.remove(
@@ -31,9 +28,6 @@ images.forEach((image, index) => {
       placeholder.classList.add("is-square");
     }
 
-    /*
-      배경색을 잠시 보여준 뒤 이미지 표시
-    */
     const delay = 1000 + (index % 6) * 120;
 
     window.setTimeout(() => {
@@ -83,9 +77,7 @@ if (contactToggle && contactPanel) {
     setContactOpen(!isOpen);
   });
 
-  /*
-    박스 바깥을 클릭하면 닫힙니다.
-  */
+ 
   document.addEventListener("click", (event) => {
     const clickedInsidePanel =
       contactPanel.contains(event.target);
@@ -98,9 +90,7 @@ if (contactToggle && contactPanel) {
     }
   });
 
-  /*
-    Esc 키로 닫기
-  */
+
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       setContactOpen(false);
