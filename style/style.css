@@ -1,13 +1,8 @@
-@charset "UTF-8";
 :root {
   --page-bg: #f4f4f0;
   --text: #111;
   --page-padding: 18px;
   --header-height: 42px;
-  /*
-    정사각형 셀 내부 여백입니다.
-    값을 크게 할수록 이미지가 더 작게 보입니다.
-  */
   --cell-padding: 30px;
 }
 
@@ -15,7 +10,6 @@
   box-sizing: border-box;
 }
 
-/* Fonts */
 @font-face {
   font-family: "Gerstner Programm FSL";
   src: url("GerstnerProgrammFSL-Bold.woff2") format("woff2"), url("GerstnerProgrammFSL-Bold.woff") format("woff");
@@ -72,7 +66,6 @@
   font-style: normal;
   font-display: swap;
 }
-/* Page */
 html,
 body {
   width: 100%;
@@ -103,7 +96,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Header */
 .site-header {
   width: 100%;
   height: var(--header-height);
@@ -195,7 +187,6 @@ body {
   text-decoration: underline;
 }
 
-/* Main */
 main {
   width: 100%;
   min-height: calc(100vh - var(--header-height));
@@ -203,10 +194,6 @@ main {
   overflow: visible;
 }
 
-/*
-  레퍼런스처럼 왼쪽에서 오른쪽으로 채워지는
-  동일한 크기의 셀 배치입니다.
-*/
 .image-grid {
   width: 100%;
   display: flex;
@@ -217,9 +204,6 @@ main {
   list-style: none;
 }
 
-/*
-  기본 화면에서는 한 줄에 6개입니다.
-*/
 .image-item {
   position: relative;
   flex: 0 0 16.6666667%;
@@ -229,19 +213,12 @@ main {
   list-style: none;
 }
 
-/*
-  각각의 셀을 정사각형으로 만듭니다.
-*/
 .image-item::after {
   content: "";
   display: block;
   padding-top: 100%;
 }
 
-/*
-  정사각형 셀 전체를 차지하며
-  내부 이미지를 가로·세로 중앙에 배치합니다.
-*/
 .thumb-wrapper {
   position: absolute;
   inset: 0;
@@ -251,20 +228,11 @@ main {
   padding: var(--cell-padding);
 }
 
-/*
-  HTML에 이미 있는 wrapper는 시각적 박스로 사용하지 않습니다.
-
-  따라서 inline aspect-ratio 값은 레이아웃에 영향을 주지 않고,
-  실제 이미지의 width/height 속성이 비율을 결정합니다.
-*/
 .image-placeholder {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  /*
-    가로·세로 이미지가 셀 안에 들어가도록 제한
-  */
   max-width: 100%;
   max-height: 100%;
   background-color: var(--placeholder, #ddd);
@@ -300,7 +268,6 @@ main {
   opacity: 1;
 }
 
-/* Responsive */
 @media (max-width: 1110px) {
   .image-item {
     flex-basis: 20%;
