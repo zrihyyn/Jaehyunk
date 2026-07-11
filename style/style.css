@@ -1,78 +1,345 @@
+@charset "UTF-8";
+:root {
+  --page-bg: #f4f4f0;
+  --text: #111;
+  --page-padding: 18px;
+  --header-height: 42px;
+  /*
+    정사각형 셀 내부 여백입니다.
+    값을 크게 할수록 이미지가 더 작게 보입니다.
+  */
+  --cell-padding: 30px;
+}
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
+/* Fonts */
+@font-face {
+  font-family: "Gerstner Programm FSL";
+  src: url("GerstnerProgrammFSL-Bold.woff2") format("woff2"), url("GerstnerProgrammFSL-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gerstner Programm FSL";
+  src: url("GerstnerProgrammFSL-BoldItalic.woff2") format("woff2"), url("GerstnerProgrammFSL-BoldItalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gerstner Programm FSL";
+  src: url("GerstnerProgrammFSL-Italic.woff2") format("woff2"), url("GerstnerProgrammFSL-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gerstner Programm FSL";
+  src: url("GerstnerProgrammFSL-Light.woff2") format("woff2"), url("GerstnerProgrammFSL-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gerstner Programm FSL";
+  src: url("GerstnerProgrammFSL-LightItalic.woff2") format("woff2"), url("GerstnerProgrammFSL-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gerstner Programm FSL";
+  src: url("GerstnerProgrammFSL-Medium.woff2") format("woff2"), url("GerstnerProgrammFSL-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gerstner Programm FSL";
+  src: url("GerstnerProgrammFSL-MediumItalic.woff2") format("woff2"), url("GerstnerProgrammFSL-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gerstner Programm FSL";
+  src: url("GerstnerProgrammFSL-Regular.woff2") format("woff2"), url("GerstnerProgrammFSL-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+/* Page */
 html,
 body {
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
+}
+
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--page-bg);
+}
+
+::-webkit-scrollbar {
+  visibility: hidden;
 }
 
 body {
-  font-family: "monotype-grotesque", sans-serif;
-  background: #000;
-  color: black;
-  position: fixed;
-  inset: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  color: var(--text);
+  background: var(--page-bg);
+  font-family: "Gerstner Programm FSL", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.33;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-header {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
-  color: white;
-  mix-blend-mode: difference;
+/* Header */
+.site-header {
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px var(--page-padding);
+  background: var(--page-bg);
 }
 
-h1 {
-  font-size: 16px;
+.site-header h1 {
+  margin: 0;
+  font: inherit;
   font-weight: 400;
 }
 
-.gallery {
-  width: 100vw;
-  height: 100dvh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  cursor: pointer;
-}
-.gallery img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-.gallery video {
-  display: none;
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  -o-object-fit: contain;
-     object-fit: contain;
+.site-header a {
+  color: inherit;
+  text-decoration: none;
 }
 
-figcaption {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 1000;
-  font-size: 13px;
-  color: white;
-  mix-blend-mode: difference;
-  font-weight: 300;
-  letter-spacing: 0.05rem;
+.contact-toggle {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
 }
-figcaption a {
-  color: white;
+
+.contact-toggle:hover,
+.contact-toggle:focus-visible,
+.contact-toggle[aria-expanded=true] {
+  text-decoration: none;
+}
+
+.contact-panel {
+  position: fixed;
+  top: var(--header-height);
+  right: var(--page-padding);
+  z-index: 100;
+  width: min(360px, 100vw - var(--page-padding) * 2);
+  color: var(--text);
+  background: var(--page-bg);
+  border: 1px solid var(--text);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms;
+}
+
+.contact-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity 180ms ease, transform 180ms ease, visibility 0s;
+}
+
+.contact-panel-inner {
+  padding: 14px;
+}
+
+.contact-panel p {
+  margin: 0 0 1.33em;
+}
+
+.contact-panel p:last-child {
+  margin-bottom: 0;
+}
+
+.contact-panel a {
+  color: inherit;
+  text-decoration: none;
+  text-underline-offset: 1px;
+}
+
+.contact-panel a:hover,
+.contact-panel a:focus-visible {
+  text-decoration: none;
+}
+
+.site-header a:hover,
+.site-header a:focus-visible {
   text-decoration: underline;
+}
+
+/* Main */
+main {
+  width: 100%;
+  min-height: calc(100vh - var(--header-height));
+  padding: 0 var(--page-padding) var(--page-padding);
+  overflow: visible;
+}
+
+/*
+  레퍼런스처럼 왼쪽에서 오른쪽으로 채워지는
+  동일한 크기의 셀 배치입니다.
+*/
+.image-grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/*
+  기본 화면에서는 한 줄에 6개입니다.
+*/
+.image-item {
+  position: relative;
+  flex: 0 0 16.6666667%;
+  width: 16.6666667%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/*
+  각각의 셀을 정사각형으로 만듭니다.
+*/
+.image-item::after {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+/*
+  정사각형 셀 전체를 차지하며
+  내부 이미지를 가로·세로 중앙에 배치합니다.
+*/
+.thumb-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--cell-padding);
+}
+
+/*
+  HTML에 이미 있는 wrapper는 시각적 박스로 사용하지 않습니다.
+
+  따라서 inline aspect-ratio 값은 레이아웃에 영향을 주지 않고,
+  실제 이미지의 width/height 속성이 비율을 결정합니다.
+*/
+.image-placeholder {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*
+    가로·세로 이미지가 셀 안에 들어가도록 제한
+  */
+  max-width: 100%;
+  max-height: 100%;
+  background-color: var(--placeholder, #ddd);
+  overflow: hidden;
+}
+
+.image-placeholder.is-landscape {
+  width: 100%;
+  height: auto;
+}
+
+.image-placeholder.is-portrait {
+  width: auto;
+  height: 100%;
+}
+
+.image-placeholder.is-square {
+  width: 100%;
+  height: 100%;
+}
+
+.image-placeholder img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: fill;
+     object-fit: fill;
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+
+.image-placeholder img.is-loaded {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 1110px) {
+  .image-item {
+    flex-basis: 20%;
+    width: 20%;
+  }
+}
+@media (max-width: 832px) {
+  :root {
+    --cell-padding: 18px;
+  }
+  .image-item {
+    flex-basis: 25%;
+    width: 25%;
+  }
+}
+@media (max-width: 555px) {
+  :root {
+    --page-padding: 16px;
+    --cell-padding: 28px;
+  }
+  .image-item {
+    flex-basis: 50%;
+    width: 50%;
+  }
+  .contact-panel {
+    right: var(--page-padding);
+    left: var(--page-padding);
+    width: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .image-item img {
+    transition: none;
+  }
+}
+@media (max-width: 555px) {
+  .contact-panel {
+    right: var(--page-padding);
+    left: var(--page-padding);
+    width: auto;
+  }
 }/*# sourceMappingURL=style.css.map */
